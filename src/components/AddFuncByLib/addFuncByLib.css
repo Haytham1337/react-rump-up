@@ -1,0 +1,18 @@
+
+.selectWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.submit {
+    margin-top: 50px;
+    margin-left: 30%;
+    border-radius: 4px;
+    font-size: large;
+    height: 80px;
+    width: 80px;
+}
+h2 {
+    font-family: Arial ;
+}

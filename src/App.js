@@ -1,9 +1,11 @@
 import './App.css';
+//import SelectInput from './components/SelectInput/index';
+import AddFuncByLib from './components/AddFuncByLib/index';
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello World!!!</h1>
+      <AddFuncByLib/>
     </div>
   );
 }
