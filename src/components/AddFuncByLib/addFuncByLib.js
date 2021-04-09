@@ -8,7 +8,7 @@ import { swapFunctionEnum } from '../../utils/swapFunctionEnum';
 
 const AddFuncByLib = ()=> {
 
-    const [funcObj,setfunc] = useState(functionsEnumMomentJs);
+    const [currentFunctions,setfunc] = useState(functionsEnumMomentJs);
 
     const OnChangeSelect = (event) =>
     {
@@ -20,7 +20,7 @@ const AddFuncByLib = ()=> {
         }
     }
 
-    const selectItems = funcObj.map(item=>(
+    const inputData = currentFunctions.map(item=>(
         <SelectInput label={item.label} values={item.values} OnChangeSelect={OnChangeSelect}/>
     ))
     return(
@@ -30,7 +30,7 @@ const AddFuncByLib = ()=> {
         </h2>
         <form onSubmit={null}>
             <div className='selectWrapper'>
-                {selectItems}
+                {inputData}
                 <input className='submit' value={'Ok'} type="submit"></input>
             </div>
         </form>
