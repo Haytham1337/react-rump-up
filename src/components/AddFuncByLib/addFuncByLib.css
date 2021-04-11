@@ -12,6 +12,12 @@
     font-size: large;
     height: 80px;
     width: 80px;
+    cursor: pointer;
+    
+}
+.submit:hover{
+    background-color: cornflowerblue;
+    color: white;
 }
 h2 {
     font-family: Arial ;

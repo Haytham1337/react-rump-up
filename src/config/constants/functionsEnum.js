@@ -16,7 +16,7 @@ export const functionsEnumDateFns = [
     },
     {
         label: 'Function',
-        values: ['1', '2', '3'],
+        values: ['Math.abs', 'Math.round', 'Math.pow'],
     }
 ]
 

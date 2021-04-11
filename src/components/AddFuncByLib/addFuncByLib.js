@@ -1,14 +1,20 @@
-import React,{useState} from 'react';
+import React,{useRef, useState} from 'react';
+import * as moment from 'moment';
 
 import './addFuncByLib.css';
 import SelectInput from '../SelectInput/index';
+import DisplayFunctions from '../DisplayFunctions/index';
 import {functionsEnumMomentJs} from '../../config/constants/functionsEnum';
 import { swapFunctionEnum } from '../../utils/swapFunctionEnum';
+
 
 
 const AddFuncByLib = ()=> {
 
     const [currentFunctions,setfunc] = useState(functionsEnumMomentJs);
+    const [selectedFunct,setSelectedFunc] = useState(false);
+    const [showHideForm,setShowHideForm] = useState(false);
+    const funcToSend = useRef([])
 
     const OnChangeSelect = (event) =>
     {
@@ -17,23 +23,37 @@ const AddFuncByLib = ()=> {
              setfunc(newFunctionsEnum);
         }
         else{
+
+            setSelectedFunc (event.target.value);
         }
     }
 
+    const onNewFuncAdd = (e)=>{
+        e.preventDefault();
+        setShowHideForm(!showHideForm);
+        funcToSend.current=[...funcToSend.current,selectedFunct]
+    } 
+
     const inputData = currentFunctions.map(item=>(
-        <SelectInput label={item.label} values={item.values} OnChangeSelect={OnChangeSelect}/>
+        <SelectInput key= {item.label}label={item.label} values={item.values} OnChangeSelect={OnChangeSelect}/>
     ))
     return(
         <div>
-        <h2>
-            Add function
-        </h2>
-        <form onSubmit={null}>
-            <div className='selectWrapper'>
-                {inputData}
-                <input className='submit' value={'Ok'} type="submit"></input>
-            </div>
-        </form>
+            {!showHideForm&&
+            <>
+                <h2>
+                    Add function
+                </h2>
+                <form onSubmit={onNewFuncAdd}>
+                    <div className='selectWrapper'>
+                        {inputData}
+                        <input className='submit' value={'Ok'} type="submit"></input>
+                    </div>
+                </form>
+            </>
+            
+            }
+        {showHideForm&& <DisplayFunctions funcList={funcToSend} showForm={setShowHideForm} setDefaultFunc={setfunc}/>}
         </div>
     )
 }
