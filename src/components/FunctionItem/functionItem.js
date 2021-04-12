@@ -1,8 +1,9 @@
-import React ,{ useReducer }from 'react';
+import React ,{ useReducer, useState }from 'react';
 
 import './functionItem.css'
 import { allFunctioms } from '../../config/constants/allFunctions';
 import { getFunctionParamsObj } from '../../utils/getFuncParamsObj';
+import { set } from 'date-fns';
 
 
 
@@ -10,6 +11,7 @@ const FunctionItem = ({funcName}) => {
 
     const functionToAdd = allFunctioms[funcName];
     const funcDefaultValues = getFunctionParamsObj(functionToAdd.length);
+    const [result,setResult] = useState(null)
 
     const [userInput, setUserInput] = useReducer(
         (state, newState) => ({...state, ...newState}),
@@ -19,12 +21,13 @@ const FunctionItem = ({funcName}) => {
       );
       const handleChange = evt => {
         const name = evt.target.name;
-        const newValue = evt.target.value;
+        const newValue = parseInt(evt.target.value);
         setUserInput({[name]: newValue});
       }
 
-      const handleCount = ()=>{
 
+      const handleCount = ()=>{
+          setResult(functionToAdd(...Object.values(userInput)));
       }
 
 
@@ -39,7 +42,7 @@ const FunctionItem = ({funcName}) => {
         <div className='funcItemWrapper'>
             <h2>{funcName}</h2>
             {inputsList}
-            <h3>Result: {functionToAdd(...Object.keys(userInput))}</h3>
+            <h3>Result: {result}</h3>
             <button onClick={handleCount}>count</button>
         </div>)
 }
