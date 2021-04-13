@@ -1,3 +1,13 @@
+# React-Rump-Up
+
+In this app you will be able to Investigate MomentJs and Date-Fns libraries by comparising different functons from these libraries.
+You will be able choose some time functions, enter the parametrs and see the result of it.
+
+App structure:
+-Components
+-Pages
+-Util
+-Constants
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
