@@ -1,11 +1,8 @@
-import React ,{ useReducer, useState }from 'react';
+import React,{ useReducer, useState } from 'react';
 
 import './functionItem.css'
 import { allFunctioms } from '../../config/constants/allFunctions';
 import { getFunctionParamsObj } from '../../utils/getFuncParamsObj';
-import { set } from 'date-fns';
-
-
 
 const FunctionItem = ({funcName}) => {
 
@@ -19,22 +16,21 @@ const FunctionItem = ({funcName}) => {
             ...funcDefaultValues
         }
       );
-      const handleChange = evt => {
-        const name = evt.target.name;
-        const newValue = parseInt(evt.target.value);
+
+    const handleChange = event => {
+        const name = event.target.name;
+        const newValue = parseInt(event.target.value);
         setUserInput({[name]: newValue});
-      }
+    }
 
-
-      const handleCount = ()=>{
+    const handleCount = ()=>{
           setResult(functionToAdd(...Object.values(userInput)));
-      }
-
+    }
 
     const inputsList = Object.keys(funcDefaultValues).map(item=>(
         <>
         <label >{item}</label>
-        <input type='text' name={item} value={userInput[item]} onChange={handleChange}></input>
+        <input type='text' name={item} value={userInput[item]} onChange={handleChange}/>
         </>
     ));
 

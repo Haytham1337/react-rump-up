@@ -1,18 +1,18 @@
 import React,{useRef, useState} from 'react';
-import * as moment from 'moment';
 
 import './addFuncByLib.css';
 import SelectInput from '../SelectInput/index';
 import DisplayFunctions from '../DisplayFunctions/index';
-import {functionsEnumMomentJs} from '../../config/constants/functionsEnum';
+import { functionsEnumMomentJs } from '../../config/constants/functionsEnum';
 import { swapFunctionEnum } from '../../utils/swapFunctionEnum';
+
 
 
 
 const AddFuncByLib = ()=> {
 
     const [currentFunctions,setfunc] = useState(functionsEnumMomentJs);
-    const [selectedFunct,setSelectedFunc] = useState(false);
+    const [selectedFunct,setSelectedFunc] = useState();
     const [showHideForm,setShowHideForm] = useState(false);
     const funcToSend = useRef([])
 
@@ -23,8 +23,8 @@ const AddFuncByLib = ()=> {
              setfunc(newFunctionsEnum);
         }
         else{
-
             setSelectedFunc (event.target.value);
+
         }
     }
 
@@ -35,7 +35,7 @@ const AddFuncByLib = ()=> {
     } 
 
     const inputData = currentFunctions.map(item=>(
-        <SelectInput key= {item.label}label={item.label} values={item.values} OnChangeSelect={OnChangeSelect}/>
+        <SelectInput key= {item.label}label={item.label} values={item.values} OnChangeSelect={OnChangeSelect} setSelectedFunc={setSelectedFunc}/>
     ))
     return(
         <div>
