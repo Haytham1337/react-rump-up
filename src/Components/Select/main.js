@@ -6,10 +6,10 @@ export const Select = ({
 	required,
 	warning,
 	hasDefaultValue,
-	OnChangeSelect,
+	onChangeSelect,
 }) => {
 	const selectProps = {
-		onChange: OnChangeSelect,
+		onChange: onChangeSelect,
 		required: required ? true : undefined,
 	}
 	const optionsItems = values.map((item, index) => {

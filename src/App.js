@@ -1,9 +1,8 @@
-import { tr } from 'date-fns/locale'
 import './App.css'
 import Select from './Components/Select'
 
 function App() {
-	const OnChangeSelect = (e) => {
+	const onChangeSelect = (e) => {
 		console.log(e.target.value)
 	}
 	const onNewFuncAdd = (e) => {
@@ -11,7 +10,6 @@ function App() {
 	}
 	return (
 		<div className='App'>
-			<h1>Hello World!</h1>
 			<form onSubmit={onNewFuncAdd}>
 				<Select
 					label={'lib'}
@@ -19,7 +17,7 @@ function App() {
 					required={true}
 					warning={true}
 					hasDefaultValue={true}
-					OnChangeSelect={OnChangeSelect}
+					onChangeSelect={onChangeSelect}
 				/>
 				<input value={'Ok'} type='submit'></input>
 			</form>
