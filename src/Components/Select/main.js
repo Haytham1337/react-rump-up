@@ -35,12 +35,12 @@ export const Select = ({
 		}
 	}
 	return (
-		<>
-			<label>{label}</label>
-			<select {...selectProps}>
+		<div className='selectWrapper'>
+			<label className='label'>{label}</label>
+			<select {...selectProps} className='selectInput'>
 				{createOptionList(hasDefaultValue, optionsItems)}
 			</select>
-			{warning && <p>{'This input cant be empty'}</p>}
-		</>
+			{warning && <p className='warningMsg'>{'This input cant be empty'}</p>}
+		</div>
 	)
 }
