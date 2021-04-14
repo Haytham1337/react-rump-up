@@ -1,0 +1,18 @@
+.selectInput{
+    width: 300px;
+    height: 40px;
+    border: black solid 2px;
+    border-radius: 3px;
+}
+.warningMsg{
+    color: red;
+    text-align: center;
+}
+.selectWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.label {
+    margin-right: 280px;
+}
