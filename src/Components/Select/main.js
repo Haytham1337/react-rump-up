@@ -4,7 +4,7 @@ export const Select = ({
 	label,
 	values,
 	required,
-	warning,
+	showWarning,
 	hasDefaultValue,
 	onChangeSelect,
 }) => {
@@ -40,7 +40,9 @@ export const Select = ({
 			<select {...selectProps} className='selectInput'>
 				{createOptionList(hasDefaultValue, optionsItems)}
 			</select>
-			{warning && <p className='warningMsg'>{'This input cant be empty'}</p>}
+			{showWarning && (
+				<p className='warningMsg'>{'This input cant be empty'}</p>
+			)}
 		</div>
 	)
 }

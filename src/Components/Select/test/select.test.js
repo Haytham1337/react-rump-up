@@ -1,26 +1,34 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 import Select from '../../Select'
-import { createSelectProps } from './variables'
+
+const createSelectProps = (
+	required = false,
+	showWarning = false,
+	hasDefaultValue = false
+) => ({
+	label: 'Libs',
+	values: ['1', '2', '3'],
+	required: required ? true : undefined,
+	showWarning: showWarning ? true : undefined,
+	hasDefaultValue: hasDefaultValue ? true : undefined,
+	OnChangeSelect: () => null,
+})
 
 describe('Select test suit', () => {
 	it('render Select component', () => {
 		render(<Select {...createSelectProps()} />)
 	})
 
-	it('Select Should have required attribute ', () => {
-		const { container } = render(
+	it('Select Should render required attribute or not', () => {
+		let select
+		const { container, rerender } = render(
 			<Select {...createSelectProps(true, false, true)} />
 		)
-		const select = container.querySelector('select')
+		select = container.querySelector('select')
 		expect(select.hasAttribute('required')).toBe(true)
-	})
-
-	it('Select Should not have required attribute ', () => {
-		const { container } = render(
-			<Select {...createSelectProps(false, false, true)} />
-		)
-		const select = container.querySelector('select')
+		rerender(<Select {...createSelectProps(false, false, true)} />)
+		select = container.querySelector('select')
 		expect(select.hasAttribute('required')).toBe(false)
 	})
 	it('Should render label', () => {
@@ -31,19 +39,16 @@ describe('Select test suit', () => {
 		expect(label.innerHTML).toBe(createSelectProps().label)
 	})
 
-	it('Should render warning paragraph', () => {
-		const { container } = render(
+	it('Should render warning paragraph or not', () => {
+		let paragraph
+		const { container, rerender } = render(
 			<Select {...createSelectProps(true, true, false)} />
 		)
-		const paragraph = container.querySelector('p')
+		paragraph = container.querySelector('p')
 		expect(paragraph).toBeDefined()
 		expect(paragraph.innerHTML).toBe('This input cant be empty')
-	})
-	it('Should not render warning paragraph', () => {
-		const { container } = render(
-			<Select {...createSelectProps(true, false, false)} />
-		)
-		const paragraph = container.querySelector('p')
+		rerender(<Select {...createSelectProps(false, false, true)} />)
+		paragraph = container.querySelector('p')
 		expect(paragraph).toBe(null)
 	})
 	it('Should render options in select', () => {
