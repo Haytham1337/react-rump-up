@@ -8,11 +8,17 @@ export const Form = ({ selectProps, onBtnSubmit, togleBtnActive }) => {
 	))
 
 	return (
-		<form>
-			{selectItems}
-			<button onClick={onBtnSubmit} {...togleBtnActive}>
-				Add func
-			</button>
-		</form>
+		<div className='formWrapper'>
+			<form>
+				{selectItems}
+				<button
+					className='addfuncBtn'
+					onClick={onBtnSubmit}
+					{...togleBtnActive}
+				>
+					Add func
+				</button>
+			</form>
+		</div>
 	)
 }
